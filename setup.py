@@ -26,6 +26,7 @@ setup(name='megrok.pagetemplate',
       install_requires=[
           'setuptools',
           'grokcore.view',
+          'grokcore.viewlet',
           'grokcore.component',
           'zope.pagetemplate'
       ],

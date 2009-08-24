@@ -4,6 +4,7 @@ import os
 import martian
 import zope.component
 import grokcore.view
+import grokcore.viewlet
 import grokcore.component
 
 from martian import util
@@ -19,7 +20,7 @@ class PageTemplateGrokker(martian.ClassGrokker):
     martian.priority(990)
     martian.component(PageTemplate)
     martian.directive(grokcore.component.name)
-    martian.directive(grokcore.component.context)
+    martian.directive(grokcore.viewlet.view)
     martian.directive(grokcore.component.provides, default=IPageTemplate)
     martian.directive(grokcore.view.layer, default=IDefaultBrowserLayer)
 
@@ -27,8 +28,7 @@ class PageTemplateGrokker(martian.ClassGrokker):
         factory.module_info = module_info
         return martian.ClassGrokker.grok(self, name, factory, module_info, **kw)
 
-    def execute(self, factory, config, name, context, layer, provides, **kw):
-
+    def execute(self, factory, config, name, view, layer, provides, **kw):
         pagetemplate = factory()
         templates = factory.module_info.getAnnotation('grok.templates', None)
         config.action(
@@ -37,7 +37,7 @@ class PageTemplateGrokker(martian.ClassGrokker):
             args=(templates, factory.module_info, factory)
             )
 
-        adapts = (context, layer)
+        adapts = (view, layer)
         config.action(
             discriminator=('adapter', adapts, provides, name),
             callable=zope.component.provideAdapter,

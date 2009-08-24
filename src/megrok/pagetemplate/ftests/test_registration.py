@@ -8,24 +8,25 @@ u'yay !\\n'
 """
 
 import megrok.pagetemplate
-import grokcore.view as grok
+import grokcore.view
+import grokcore.viewlet 
 
 from zope.component import getMultiAdapter
 from zope.pagetemplate.interfaces import IPageTemplate
 from megrok.pagetemplate.ftests import FunctionalLayer
 
-grok.templatedir("templates")
+grokcore.view.templatedir("templates")
 
 
-class MyContext(grok.Context):
+class MyContext(grokcore.view.Context):
     """A context.
     """
 
 
-class MyView(grok.View):
+class MyView(grokcore.view.View):
     """A very simple view.
     """
-    grok.context(MyContext)
+    grokcore.view.context(MyContext)
     template = None
 
     def render(self):
@@ -34,8 +35,8 @@ class MyView(grok.View):
 
 
 class MyTemplate(megrok.pagetemplate.PageTemplate):
-    grok.context(MyView)
-    grok.template("test")
+    grokcore.viewlet.view(MyView)
+    grokcore.view.template("test")
 
 
 def test_suite():
