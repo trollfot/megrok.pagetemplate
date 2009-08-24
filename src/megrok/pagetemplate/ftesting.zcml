@@ -2,7 +2,10 @@
    xmlns="http://namespaces.zope.org/zope"
    xmlns:grok="http://namespaces.zope.org/grok">
 
-  <import package="megrok.pagetemplate" />
-  <grok:grok package="megrok.pagetemplate.tests" />
+  <include package="grokcore.component" file="meta.zcml"/>
+  <include package="grokcore.view" file="meta-minimal.zcml" />
+  <include package="megrok.pagetemplate" file="meta.zcml"/>
+
+  <grok:grok package="megrok.pagetemplate.ftests" />
 
 </configure>
