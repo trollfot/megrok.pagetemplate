@@ -29,6 +29,7 @@ class PageTemplateGrokker(martian.ClassGrokker):
 
     def execute(self, factory, config, name, context, layer, provides, **kw):
 
+        pagetemplate = factory()
         templates = factory.module_info.getAnnotation('grok.templates', None)
         config.action(
             discriminator=None,
@@ -36,7 +37,6 @@ class PageTemplateGrokker(martian.ClassGrokker):
             args=(templates, factory.module_info, factory)
             )
 
-        pagetemplate = factory()
         adapts = (context, layer)
         config.action(
             discriminator=('adapter', adapts, provides, name),
@@ -52,7 +52,7 @@ class PageTemplateGrokker(martian.ClassGrokker):
             return False
 
         def has_no_render(factory):
-            return False
+            return True
         
         templates.checkTemplates(module_info, factory, 'pagetemplate',
                                  has_render, has_no_render)

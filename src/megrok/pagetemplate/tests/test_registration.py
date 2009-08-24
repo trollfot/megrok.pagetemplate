@@ -1,17 +1,22 @@
 """
   >>> megrok.pagetemplate.testing.grok(__name__) 
-
   >>> from zope.component import getMultiAdapter
   >>> from zope.publisher.browser import TestRequest
   >>> request = TestRequest()
   >>> obj = MyView(MyContext(), request)
-  >>> template = getMultiAdapter((obj, request), IPageTemplate, name='toto')
-  >>> IPageTemplate.providedBy(template)
+  >>> obj.render()
+  u'yay !\n'
 """
 
-import megrok.pagetemplate
+import unittest
+from megrok.pagetemplate.tests import FunctionalLayer
+#from megrok.pagetemplate import PageTemplate
 import grokcore.view as grok
+from zope.component import getMultiAdapter
 from zope.pagetemplate.interfaces import IPageTemplate
+from megrok.pagetemplate.tests import FunctionalLayer
+
+grok.templatedir("templates")
 
 
 class MyContext(grok.Context):
@@ -22,11 +27,17 @@ class MyView(grok.View):
     """A very simple view.
     """
     grok.context(MyContext)
-    
-class MyTemplate(megrok.pagetemplate.PageTemplate):
-    grok.name("toto")
-    grok.context(MyView)
-    grok.template("test")
+    template = None
+
+    def render(self):
+        template = getMultiAdapter((self, self.request),
+                                   IPageTemplate)
+        return template.render(self)
+
+
+#class MyTemplate(PageTemplate):
+#    grok.context(MyView)
+#    grok.template("test")
 
 
 def test_suite():
@@ -34,4 +45,5 @@ def test_suite():
     suite = doctest.DocTestSuite(
         optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS
         )
+    suite.layer = FunctionalLayer
     return suite

@@ -1,0 +1,8 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:grok="http://namespaces.zope.org/grok">
+
+  <import package="megrok.pagetemplate" />
+  <grok:grok package="megrok.pagetemplate.tests" />
+
+</configure>

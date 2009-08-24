@@ -8,4 +8,9 @@ class PageTemplate(object):
     baseclass()
 
     def __call__(self, view, request):
-        return self.template
+        import pdb
+        pdb.set_trace()
+        return ViewPageTemplateFile
+
+
+    
