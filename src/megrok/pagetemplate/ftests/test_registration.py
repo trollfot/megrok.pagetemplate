@@ -1,10 +1,20 @@
 """
->>> from zope.component import getMultiAdapter
 >>> from zope.publisher.browser import TestRequest
 >>> request = TestRequest()
+
 >>> obj = MyView(MyContext(), request)
->>> obj.render()
-u'yay !\\n'
+>>> obj()
+u'<span>Test !</span>\\n<div>\\n  <strong>It works</strong>\\n</div>\\n'
+
+>>> template = getMultiAdapter((obj, request), IPageTemplate)
+>>> IPageTemplate.providedBy(template)
+True
+
+>>> template.macros
+{u'a_simple_macro': ...
+
+>>> template.read()
+u'<span></span>\\n<div>\\n  <strong>It works</strong>\\n</div>\\n'
 """
 
 import megrok.pagetemplate
@@ -27,11 +37,13 @@ class MyView(grokcore.view.View):
     """A very simple view.
     """
     grokcore.view.context(MyContext)
-    template = None
+
+    def update(self):
+        self.label = u"Test !"
 
     def render(self):
         template = getMultiAdapter((self, self.request), IPageTemplate)
-        return template(self)
+        return template()
 
 
 class MyTemplate(megrok.pagetemplate.PageTemplate):
