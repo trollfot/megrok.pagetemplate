@@ -1,20 +1,28 @@
 """
->>> from zope.publisher.browser import TestRequest
->>> request = TestRequest()
+  >>> from zope.publisher.browser import TestRequest
+  >>> request = TestRequest()
 
->>> obj = MyView(MyContext(), request)
->>> obj()
-u'<span>Test !</span>\\n<div>\\n  <strong>It works</strong>\\n</div>\\n'
+  >>> obj = MyView(MyContext(), request)
+  >>> print obj()
+  <span>Test !</span>
+  <div>
+    <strong>It works</strong>
+  </div>
+  <BLANKLINE>
 
->>> template = getMultiAdapter((obj, request), IPageTemplate)
->>> IPageTemplate.providedBy(template)
-True
+  >>> template = getMultiAdapter((obj, request), IPageTemplate)
+  >>> IPageTemplate.providedBy(template)
+  True
 
->>> template.macros
-{u'a_simple_macro': ...
+  >>> print template.macros
+  {u'a_simple_macro': ...
 
->>> template.read()
-u'<span></span>\\n<div>\\n  <strong>It works</strong>\\n</div>\\n'
+  >>> print template.read()
+  <span></span>
+  <div>
+    <strong>It works</strong>
+  </div>
+  <BLANKLINE>
 """
 
 import megrok.pagetemplate
