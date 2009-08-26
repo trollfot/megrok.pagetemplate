@@ -26,7 +26,15 @@ class ViewPageTemplate(object):
 
 
 class PageTemplate(object):
+    """A PageTemplate is a factory that will return an IPageTemplate object
+    while called. It can be registered as a factory adapter. While grokked,
+    It will take the 'template', 'view' and 'layer' directives in order to
+    register itself as a multi adapter. It can be named, using the 'name'
+    directive.
+    """
     baseclass()
 
     def __call__(self, view, request):
+        """Returns an IPageTemplate object.
+        """
         return ViewPageTemplate(self.template, view)
