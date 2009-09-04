@@ -9,5 +9,6 @@ def grok(module_name):
     zcml.do_grok('grokcore.view.meta', config)
     zcml.do_grok('grokcore.view.templatereg', config)
     zcml.do_grok('megrok.pagetemplate.meta', config)
-    zcml.do_grok(module_name, config)
+    if module_name is not 'megrok.pagetemplate.meta':
+        zcml.do_grok(module_name, config)
     config.execute_actions()

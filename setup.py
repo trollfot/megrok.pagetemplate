@@ -6,8 +6,10 @@ version = '0.1'
 setup(name='megrok.pagetemplate',
       version=version,
       description="",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      long_description = (
+          open("src/megrok/pagetemplate/README.txt").read() + "\n" +
+          open(os.path.join("docs", "HISTORY.txt")).read(),
+          )
 
       classifiers=[
         'Development Status :: 4 - Beta',
