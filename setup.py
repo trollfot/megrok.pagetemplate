@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0'
+version = '0.1'
 
 setup(name='megrok.pagetemplate',
       version=version,
@@ -10,13 +10,18 @@ setup(name='megrok.pagetemplate',
                        open(os.path.join("docs", "HISTORY.txt")).read(),
 
       classifiers=[
-        "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
+        'Development Status :: 4 - Beta',
+        'Environment :: Web Environment',
+        'Framework :: Zope3',
+        'Intended Audience :: Other Audience',
+        'License :: OSI Approved :: GNU General Public License (GPL)',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
         ],
-      keywords='',
-      author='',
-      author_email='',
-      url='',
+      keywords='Grok Pagetemplate Zope Layout Dolmen',
+      author='Souheil Chelfouh',
+      author_email='trollfot@gmail.com',
+      url='http://pypi.python.org/pypi/megrok.pagetemplate',
       license='GPL',
       packages=find_packages('src', exclude=['ez_setup']),
       package_dir={'': 'src'},
