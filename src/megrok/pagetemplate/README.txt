@@ -97,9 +97,53 @@ to render it :
   >>> request = TestRequest()
   >>> mammoth = Mammoth()
 
-  >>> mv = getMultiAdapter((mammoth, request), name="mammothview")
-  >>> print mv()
+  >>> mnv = getMultiAdapter((mammoth, request), name="mammothview")
+  >>> print mnv()
   My name is Grokky. I am naked !
   <BLANKLINE>
   
+Our Mammoth is rendered as expected. Though, we cannot decently leave
+this creature naked. It needs some fur to face the harsh temperature
+of the Syberian winter.
 
+In order to customize our Mammoth rendering to change it from Naked to
+Furry, we'll create a skin on which we'll register our new furry
+template component :
+
+  >>> from zope.publisher.interfaces import browser
+  >>> class IFurryLayer(browser.IDefaultBrowserLayer):
+  ...     """A layer for furry animals.
+  ...     """
+  >>> furry_request = TestRequest(skin=IFurryLayer)
+
+
+  >>> class FurryMammoth(pt.PageTemplate):
+  ...     """A mammoth shown in its simpliest apparel
+  ...     """
+  ...     pt.view(MammothView)
+  ...     pt.layer(IFurryLayer)
+  ...     template = view.PageTemplate(
+  ...        '<span tal:replace="view/mammoth_name" /> I am all furry !'
+  ...        )
+
+  >>> grok_component('FurryMammoth', FurryMammoth)
+  True
+
+Our new template registered, we are able to test if your skin did its
+work and make our Mammoth furry.
+
+  >>> mfv = getMultiAdapter((mammoth, furry_request), name="mammothview")
+  >>> print mfv()
+  My name is Grokky. I am all furry !
+  <BLANKLINE>
+
+Awesome. Our Mammoth is now fully prepared to face the cold. Though,
+let's make sure the simpliest request strip the animal from its warm
+hairs :
+
+  >>> mnv = getMultiAdapter((mammoth, request), name="mammothview")
+  >>> print mnv()
+  My name is Grokky. I am naked !
+  <BLANKLINE>
+
+That works. Enjoy !
