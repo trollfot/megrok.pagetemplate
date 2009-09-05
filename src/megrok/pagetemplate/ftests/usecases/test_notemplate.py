@@ -14,7 +14,7 @@ We create a pagetemplate with no template defined.
   >>> grokcore.component.testing.grok_component('fail', AnotherTemplate)
   Traceback (most recent call last):
   ...
-  ConfigurationExecutionError: <class 'martian.error.GrokError'>: Pagetemplate <class 'megrok.pagetemplate.ftests.test_notemplate.AnotherTemplate'> has no associated template or 'render' method.
+  ConfigurationExecutionError: <class 'martian.error.GrokError'>: Pagetemplate <class 'megrok.pagetemplate.ftests.usecases.test_notemplate.AnotherTemplate'> has no associated template or 'render' method.
   ...
 
 During the component registration process, the template registry complains.
@@ -30,7 +30,7 @@ Yet, the template doesn't exist : we except another failure.
   >>> grokcore.component.testing.grok_component('fail', YetAnotherTemplate)
   Traceback (most recent call last):
   ...
-  ConfigurationExecutionError: <class 'martian.error.GrokError'>: Pagetemplate <class 'megrok.pagetemplate.ftests.test_notemplate.YetAnotherTemplate'> has no associated template or 'render' method.
+  ConfigurationExecutionError: <class 'martian.error.GrokError'>: Pagetemplate <class 'megrok.pagetemplate.ftests.usecases.test_notemplate.YetAnotherTemplate'> has no associated template or 'render' method.
   ...
 
 The template registry is not fooled by the template directive. It works.
@@ -43,7 +43,6 @@ import grokcore.viewlet
 
 from zope.component import getMultiAdapter
 from zope.pagetemplate.interfaces import IPageTemplate
-from megrok.pagetemplate.ftests import FunctionalLayer
 
 grokcore.view.templatedir("templates")
 
@@ -60,12 +59,3 @@ class AnotherView(grokcore.view.View):
 
     def render(self):
         return u'nothing here to be seen !'
-
-
-def test_suite():
-    from zope.testing import doctest
-    suite = doctest.DocTestSuite(
-        optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS
-        )
-    suite.layer = FunctionalLayer
-    return suite

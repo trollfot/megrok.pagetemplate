@@ -18,14 +18,11 @@ register the template files associated to the pagetemplate component.
 Getting started
 ---------------
 
-First, we grok the package grokkers and import our dependencies:
+First, we import our dependencies:
 
   >>> import grokcore.view as view
   >>> import megrok.pagetemplate as pt
-  >>> import megrok.pagetemplate.testing
   >>> from grokcore.component.testing import grok, grok_component
-
-  >>> megrok.pagetemplate.testing.grok('megrok.pagetemplate.meta')
   
 
 A complete yet self-explanatory example
@@ -68,9 +65,9 @@ simple view that displays it.
   ...	  def update(self):
   ...	      self.mammoth_name = u"My name is %s." % self.context.nickname
   ...
-  ...     def render(self):
-  ...         template = getMultiAdapter((self, self.request), IPageTemplate)
-  ...         return template()
+  ...	  def render(self):
+  ...	      template = getMultiAdapter((self, self.request), IPageTemplate)
+  ...	      return template()
 
   >>> grok_component('my_mammoth_view', MammothView)
   True
@@ -82,14 +79,27 @@ registry lookup.
 
 To be complete, here, we'll provide a IPageTemplate component :
 
-  >>> view.templatedir('tests/readme')
-  <grokcore.view.directive.templatedir object at ...>
-
   >>> class NakedMammoth(pt.PageTemplate):
   ...     """A mammoth shown in its simpliest apparel
   ...     """
   ...     pt.view(MammothView)
-  ...     view.template('naked')
+  ...     template = view.PageTemplate(
+  ...        '<span tal:replace="view/mammoth_name" /> I am naked !'
+  ...        )
 
-  >>> grok_component('naked_mammoth_template', NakedMammoth)
+  >>> grok_component('NakedMammoth', NakedMammoth)
   True
+
+Now that our template is registered, we can try to summon the view and
+to render it :
+
+  >>> from zope.publisher.browser import TestRequest
+  >>> request = TestRequest()
+  >>> mammoth = Mammoth()
+
+  >>> mv = getMultiAdapter((mammoth, request), name="mammothview")
+  >>> print mv()
+  My name is Grokky. I am naked !
+  <BLANKLINE>
+  
+

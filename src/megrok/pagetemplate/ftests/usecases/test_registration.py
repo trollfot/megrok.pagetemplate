@@ -25,13 +25,12 @@
   <BLANKLINE>
 """
 
-import megrok.pagetemplate
 import grokcore.view
 import grokcore.viewlet 
+import megrok.pagetemplate
 
 from zope.component import getMultiAdapter
 from zope.pagetemplate.interfaces import IPageTemplate
-from megrok.pagetemplate.ftests import FunctionalLayer
 
 grokcore.view.templatedir("templates")
 
@@ -57,12 +56,3 @@ class MyView(grokcore.view.View):
 class MyTemplate(megrok.pagetemplate.PageTemplate):
     grokcore.viewlet.view(MyView)
     grokcore.view.template("test")
-
-
-def test_suite():
-    from zope.testing import doctest
-    suite = doctest.DocTestSuite(
-        optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS
-        )
-    suite.layer = FunctionalLayer
-    return suite

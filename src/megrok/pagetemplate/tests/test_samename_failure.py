@@ -13,7 +13,6 @@ import grokcore.viewlet
 
 from zope.component import getMultiAdapter
 from zope.pagetemplate.interfaces import IPageTemplate
-from megrok.pagetemplate.ftests import FunctionalLayer
 
 grokcore.view.templatedir("templates")
 
@@ -44,9 +43,7 @@ class EmmaTemplate(megrok.pagetemplate.PageTemplate):
 
 def test_suite():
     from zope.testing import doctest
-    from megrok.layout.ftests import FunctionalLayer
     suite = doctest.DocTestSuite(
         optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS
         )
-    suite.layer = FunctionalLayer
     return suite

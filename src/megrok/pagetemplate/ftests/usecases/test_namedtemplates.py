@@ -63,13 +63,10 @@ We verify we can query both :
 
 """
 
-import megrok.pagetemplate
 import grokcore.view
 import grokcore.viewlet 
 import grokcore.component
-
-from megrok.pagetemplate.ftests import FunctionalLayer
-
+import megrok.pagetemplate
 
 grokcore.view.templatedir("templates")
 
@@ -86,12 +83,3 @@ class View(grokcore.view.View):
 
     def render(self):
         return u"Nothing here"
-
-
-def test_suite():
-    from zope.testing import doctest
-    suite = doctest.DocTestSuite(
-        optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS
-        )
-    suite.layer = FunctionalLayer
-    return suite

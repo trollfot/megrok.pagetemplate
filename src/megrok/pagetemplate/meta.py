@@ -31,11 +31,13 @@ class PageTemplateGrokker(martian.ClassGrokker):
     def execute(self, factory, config, name, view, layer, provides, **kw):
         pagetemplate = factory()
         templates = factory.module_info.getAnnotation('grok.templates', None)
-        config.action(
-            discriminator=None,
-            callable=self.checkTemplates,
-            args=(templates, factory.module_info, factory)
-            )
+
+        if templates is not None:
+            config.action(
+                discriminator=None,
+                callable=self.checkTemplates,
+                args=(templates, factory.module_info, factory)
+                )
 
         adapts = (view, layer)
         config.action(

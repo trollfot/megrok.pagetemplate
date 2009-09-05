@@ -8,9 +8,8 @@ setup(name='megrok.pagetemplate',
       description="",
       long_description = (
           open("src/megrok/pagetemplate/README.txt").read() + "\n" +
-          open(os.path.join("docs", "HISTORY.txt")).read(),
-          )
-
+          open(os.path.join("docs", "HISTORY.txt")).read()
+          ),
       classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
