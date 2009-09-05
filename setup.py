@@ -5,7 +5,8 @@ version = '0.1'
 
 setup(name='megrok.pagetemplate',
       version=version,
-      description="",
+      description=("Page template component for Grok, "
+                   "based on zope.pagetemplate"),
       long_description = (
           open("src/megrok/pagetemplate/README.txt").read() + "\n" +
           open(os.path.join("docs", "HISTORY.txt")).read()
@@ -29,6 +30,7 @@ setup(name='megrok.pagetemplate',
       namespace_packages=['megrok'],
       include_package_data=True,
       zip_safe=False,
+      platforms = 'Any',
       install_requires=[
           'setuptools',
           'grokcore.view',
