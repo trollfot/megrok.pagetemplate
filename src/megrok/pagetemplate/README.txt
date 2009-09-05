@@ -29,20 +29,20 @@ A complete yet self-explanatory example
 ---------------------------------------
 
 To get started with the code itself, let's explain the concept behind
-the PageTemplate component. As it is usually implemented in most zope3
-application, only one component is used in order to display an object
-: the View. The View is a multi adapter, adapting the context and the
-request and providing a rendering method (__call__, usually). If we
-want to customize a View, we need to subclass it or to override it. In
-both case, we end end up with a new View and, in the worse case, the
-code (the logic) inside the View needs to be duplicated.
+the PageTemplate component. The display is usually handled by the a
+dedicated component: the View. The View is a multi adapter, adapting
+the context and the request. It provides a rendering method
+(__call__, usually). If we want to customize a View, we need to
+subclass it or override it. In both case, we end up with a new
+View and some code might have to be duplicated.
 
-The PageTemplate allows you to interact at the rendering level. It's a
-component implement IPageTemplate and is registered as a multi
-adapter, adapting a View and a Layer (request type). This PageTemplate
-can be named, for even more customization possibilities. 
+The PageTemplate component allows you to interact at the rendering
+level. This new component implements the zope.app.pagetemplace
+IPageTemplate interface and is registered as a multi adapter, adapting
+a View and a Layer (request type). This PageTemplate can be named, for
+more customization possibilities.
 
-Let's get a concrete example to get into the concept. First, we need a
+Let's build a concrete example to get into the concept. First, we need a
 context. Our usecase will be to provide different renderings for an
 adorable animal : the Mammoth. First, let's create our mammoth and a
 simple view that displays it.
@@ -104,10 +104,10 @@ to render it :
   
 Our Mammoth is rendered as expected. Though, we cannot decently leave
 this creature naked. It needs some fur to face the harsh temperature
-of the Syberian winter.
+of the Siberian winter.
 
-In order to customize our Mammoth rendering to change it from Naked to
-Furry, we'll create a skin on which we'll register our new furry
+In order to customize our Mammoth rendering, to change it from Naked to
+Furry, we'll create a skin on which we'll register our new 'furry'
 template component :
 
   >>> from zope.publisher.interfaces import browser
@@ -129,8 +129,8 @@ template component :
   >>> grok_component('FurryMammoth', FurryMammoth)
   True
 
-Our new template registered, we are able to test if your skin did its
-work and make our Mammoth furry.
+Our new template registered, we are now able to test if everything worked
+as intended. Using the new skin, our Mammoth should now be furry.
 
   >>> mfv = getMultiAdapter((mammoth, furry_request), name="mammothview")
   >>> print mfv()
