@@ -37,7 +37,7 @@ subclass it or override it. In both case, we end up with a new
 View and some code might have to be duplicated.
 
 The PageTemplate component allows you to interact at the rendering
-level. This new component implements the zope.app.pagetemplace
+level. This new component implements the zope.pagetemplate
 IPageTemplate interface and is registered as a multi adapter, adapting
 a View and a Layer (request type). This PageTemplate can be named, for
 more customization possibilities.
