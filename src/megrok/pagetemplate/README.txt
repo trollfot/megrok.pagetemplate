@@ -57,7 +57,7 @@ simple view that displays it.
   ...     nickname = u"Grokky" 
 
 
-  >>> class MammothView(view.View):
+  >>> class MammothView(view.CodeView):
   ...     """A view that display a mammoth
   ...     """
   ...	  view.context(Mammoth)

@@ -33,7 +33,7 @@ setup(name='megrok.pagetemplate',
       platforms = 'Any',
       install_requires=[
           'setuptools',
-          'grokcore.view',
+          'grokcore.view==1.11',
           'grokcore.viewlet',
           'grokcore.component',
           'zope.pagetemplate'

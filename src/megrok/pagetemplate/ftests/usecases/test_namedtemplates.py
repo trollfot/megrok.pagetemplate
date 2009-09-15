@@ -76,7 +76,7 @@ class Context(grokcore.view.Context):
     """
 
 
-class View(grokcore.view.View):
+class View(grokcore.view.CodeView):
     """A very simple view.
     """
     grokcore.view.context(Context)
