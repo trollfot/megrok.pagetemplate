@@ -8,7 +8,8 @@ setup(name='megrok.pagetemplate',
       description=("Page template component for Grok, "
                    "based on zope.pagetemplate"),
       long_description = u"%s\n\n%s" % (
-          open("src", "megrok", "pagetemplate", "README.txt").read(),
+          open(os.path.join("src", "megrok", "pagetemplate", "README.txt"
+                            )).read(),
           open(os.path.join("docs", "HISTORY.txt")).read()
           ),
       classifiers=[
