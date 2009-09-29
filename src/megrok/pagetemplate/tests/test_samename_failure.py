@@ -22,7 +22,7 @@ class Context(grokcore.view.Context):
     """
 
 
-class View(grokcore.view.CodeView):
+class View(grokcore.view.View):
     """A very simple view.
     """
     def render(self):

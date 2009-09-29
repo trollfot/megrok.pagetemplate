@@ -18,7 +18,7 @@ register the template files associated to the pagetemplate component.
 Getting started
 ---------------
 
-First, we import our dependencies:
+First, we import our dependencies::
 
   >>> import grokcore.view as view
   >>> import megrok.pagetemplate as pt
@@ -45,7 +45,7 @@ more customization possibilities.
 Let's build a concrete example to get into the concept. First, we need a
 context. Our usecase will be to provide different renderings for an
 adorable animal : the Mammoth. First, let's create our mammoth and a
-simple view that displays it.
+simple view that displays it::
 
 
   >>> from zope.component import getMultiAdapter
@@ -57,7 +57,7 @@ simple view that displays it.
   ...     nickname = u"Grokky" 
 
 
-  >>> class MammothView(view.CodeView):
+  >>> class MammothView(view.View):
   ...     """A view that display a mammoth
   ...     """
   ...	  view.context(Mammoth)
@@ -77,7 +77,7 @@ PageTemplate component. It will render the template found by the
 registry lookup.
 
 
-To be complete, here, we'll provide a IPageTemplate component :
+To be complete, here, we'll provide a IPageTemplate component::
 
   >>> class NakedMammoth(pt.PageTemplate):
   ...     """A mammoth shown in its simpliest apparel
@@ -91,7 +91,7 @@ To be complete, here, we'll provide a IPageTemplate component :
   True
 
 Now that our template is registered, we can try to summon the view and
-to render it :
+to render it::
 
   >>> from zope.publisher.browser import TestRequest
   >>> request = TestRequest()
@@ -108,7 +108,7 @@ of the Siberian winter.
 
 In order to customize our Mammoth rendering, to change it from Naked to
 Furry, we'll create a skin on which we'll register our new 'furry'
-template component :
+template component::
 
   >>> from zope.publisher.interfaces import browser
   >>> class IFurryLayer(browser.IDefaultBrowserLayer):
@@ -130,7 +130,7 @@ template component :
   True
 
 Our new template registered, we are now able to test if everything worked
-as intended. Using the new skin, our Mammoth should now be furry.
+as intended. Using the new skin, our Mammoth should now be furry::
 
   >>> mfv = getMultiAdapter((mammoth, furry_request), name="mammothview")
   >>> print mfv()
@@ -139,7 +139,7 @@ as intended. Using the new skin, our Mammoth should now be furry.
 
 Awesome. Our Mammoth is now fully prepared to face the cold. Though,
 let's make sure the simpliest request strip the animal from its warm
-hairs :
+hairs::
 
   >>> mnv = getMultiAdapter((mammoth, request), name="mammothview")
   >>> print mnv()

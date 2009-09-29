@@ -40,7 +40,7 @@ class MyContext(grokcore.view.Context):
     """
 
 
-class MyView(grokcore.view.CodeView):
+class MyView(grokcore.view.View):
     """A very simple view.
     """
     grokcore.view.context(MyContext)

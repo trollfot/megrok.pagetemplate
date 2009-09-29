@@ -1,14 +1,14 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1'
+version = '0.2'
 
 setup(name='megrok.pagetemplate',
       version=version,
       description=("Page template component for Grok, "
                    "based on zope.pagetemplate"),
-      long_description = (
-          open("src/megrok/pagetemplate/README.txt").read() + "\n" +
+      long_description = u"%s\n\n%s" % (
+          open("src", "megrok", "pagetemplate", "README.txt").read(),
           open(os.path.join("docs", "HISTORY.txt")).read()
           ),
       classifiers=[
@@ -33,7 +33,7 @@ setup(name='megrok.pagetemplate',
       platforms = 'Any',
       install_requires=[
           'setuptools',
-          'grokcore.view==1.11',
+          'grokcore.view>=1.12.1',
           'grokcore.viewlet',
           'grokcore.component',
           'zope.pagetemplate'
