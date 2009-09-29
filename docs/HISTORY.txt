@@ -5,11 +5,8 @@ Changelog
 -------------------
 
 * `megrok.pagetemplate` has been upgraded to work with the latest
-  grokcore.view. Tests has been corrected and CodeView is
+  grokcore.view (1.12.1). Tests has been corrected and CodeView is
   gone. [trollfot]
-
-* Added a standalone buildout to test the package, with a custom
-  versions.cfg. [trollfot]
 
 
 0.1 - Beta1 Release
