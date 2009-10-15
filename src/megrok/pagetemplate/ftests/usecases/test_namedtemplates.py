@@ -13,15 +13,15 @@ here will be to add the 'name' directive.
    >>> from zope.pagetemplate.interfaces import IPageTemplate
    
    >>> class Template(megrok.pagetemplate.PageTemplate):
-   ...     grokcore.viewlet.view(View)
-   ...     grokcore.viewlet.name('first')
-   ...     grokcore.view.template('test')
+   ...     megrok.pagetemplate.view(View)
+   ...     megrok.pagetemplate.name('first')
+   ...     megrok.pagetemplate.template('test')
 
    >>> grokcore.component.testing.grok_component('one', Template)
    True
 
 
-As it's registered, we can not query it :
+As it's registered, we can not query it::
 
    >>> from zope.publisher.browser import TestRequest
    >>> from zope.component import queryMultiAdapter
@@ -34,24 +34,24 @@ As it's registered, we can not query it :
 
 
 Querying it without a name lead to an error, if no template is registered
-for u'' :
+for u''::
 
    >>> print queryMultiAdapter((view, request), IPageTemplate)
    None
 
 
-Now, we can register a second template, for the same view/request couple :
+Now, we can register a second template, for the same view/request couple::
 
    >>> class AnotherTemplate(megrok.pagetemplate.PageTemplate):
-   ...     grokcore.viewlet.view(View)
-   ...     grokcore.viewlet.name('second')
-   ...     grokcore.view.template('test')
+   ...     megrok.pagetemplate.view(View)
+   ...     megrok.pagetemplate.name('second')
+   ...     megrok.pagetemplate.template('test')
 
    >>> grokcore.component.testing.grok_component('two', AnotherTemplate)
    True
 
 
-We verify we can query both :
+We verify we can query both::
 
    >>> pt1 = queryMultiAdapter((view, request), IPageTemplate, name='first')
    >>> print pt1
@@ -61,14 +61,20 @@ We verify we can query both :
    >>> print pt2
    <megrok.pagetemplate.components.ViewPageTemplate object at ...>
 
+
+We try out convenient function::
+
+   >>> same = megrok.pagetemplate.getPageTemplate(view, request, name='first')
+   >>> print same.template
+   <test template in /home/trollfot/projects/sandbox/megrok.pagetemplate/src/megrok/pagetemplate/ftests/usecases/templates/test.pt>
+
 """
 
 import grokcore.view
-import grokcore.viewlet 
 import grokcore.component
 import megrok.pagetemplate
 
-grokcore.view.templatedir("templates")
+megrok.pagetemplate.templatedir("templates")
 
 
 class Context(grokcore.view.Context):

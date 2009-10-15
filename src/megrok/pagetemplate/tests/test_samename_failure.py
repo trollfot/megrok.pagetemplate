@@ -7,14 +7,13 @@
       For: ('adapter', (<class 'megrok.pagetemplate.tests.test_samename_failure.View'>, <InterfaceClass zope.publisher.interfaces.browser.IDefaultBrowserLayer>), <InterfaceClass zope.pagetemplate.interfaces.IPageTemplate>, 'judith')...
 """
 
-import megrok.pagetemplate
 import grokcore.view
-import grokcore.viewlet 
+import megrok.pagetemplate
 
 from zope.component import getMultiAdapter
 from zope.pagetemplate.interfaces import IPageTemplate
 
-grokcore.view.templatedir("templates")
+megrok.pagetemplate.templatedir("templates")
 
 
 class Context(grokcore.view.Context):
@@ -30,15 +29,15 @@ class View(grokcore.view.View):
 
 
 class JudithTemplate(megrok.pagetemplate.PageTemplate):
-    grokcore.viewlet.view(View)
-    grokcore.viewlet.name('judith')
-    grokcore.view.template('judith')
+    megrok.pagetemplate.view(View)
+    megrok.pagetemplate.name('judith')
+    megrok.pagetemplate.template('judith')
 
 
 class EmmaTemplate(megrok.pagetemplate.PageTemplate):
-    grokcore.viewlet.view(View)
-    grokcore.viewlet.name('judith')
-    grokcore.view.template('emma')
+    megrok.pagetemplate.view(View)
+    megrok.pagetemplate.name('judith')
+    megrok.pagetemplate.template('emma')
 
 
 def test_suite():

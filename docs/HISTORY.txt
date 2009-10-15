@@ -1,6 +1,16 @@
 Changelog
 =========
 
+0.3 - Beta3 Release
+-------------------
+
+* Modified tests to import all the directives needed directly from the
+  package `megrok.pagetemplate` itself. [trollfot]
+
+* Added a convenient function ``getPageTemplate`` to query the page
+  template component.
+
+
 0.2 - Beta2 Release
 -------------------
 

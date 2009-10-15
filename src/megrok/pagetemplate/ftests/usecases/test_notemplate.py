@@ -9,7 +9,7 @@ Let's verify the behavior expected from our component :
 We create a pagetemplate with no template defined.
   
   >>> class AnotherTemplate(megrok.pagetemplate.PageTemplate):
-  ...     grokcore.viewlet.view(AnotherView)
+  ...     megrok.pagetemplate.view(AnotherView)
 
   >>> grokcore.component.testing.grok_component('fail', AnotherTemplate)
   Traceback (most recent call last):
@@ -24,8 +24,8 @@ Now, we'll try creating a pagetemplate with an explicit template defined.
 Yet, the template doesn't exist : we except another failure.
 
   >>> class YetAnotherTemplate(megrok.pagetemplate.PageTemplate):
-  ...     grokcore.viewlet.view(AnotherView)
-  ...     grokcore.view.template('doesnt_exist')
+  ...     megrok.pagetemplate.view(AnotherView)
+  ...     megrok.pagetemplate.template('doesnt_exist')
 
   >>> grokcore.component.testing.grok_component('fail', YetAnotherTemplate)
   Traceback (most recent call last):
@@ -44,7 +44,7 @@ import grokcore.viewlet
 from zope.component import getMultiAdapter
 from zope.pagetemplate.interfaces import IPageTemplate
 
-grokcore.view.templatedir("templates")
+megrok.pagetemplate.templatedir("templates")
 
 
 class AnotherContext(grokcore.view.Context):

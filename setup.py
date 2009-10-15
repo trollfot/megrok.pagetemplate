@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.2'
+version = '0.3'
 
 setup(name='megrok.pagetemplate',
       version=version,
@@ -34,9 +34,10 @@ setup(name='megrok.pagetemplate',
       platforms = 'Any',
       install_requires=[
           'setuptools',
-          'grokcore.view>=1.12.1',
+          'grokcore.view>=1.12.2',
           'grokcore.viewlet',
           'grokcore.component',
+          'zope.component',
           'zope.pagetemplate'
       ],
       entry_points="""

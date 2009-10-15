@@ -137,6 +137,11 @@ as intended. Using the new skin, our Mammoth should now be furry::
   My name is Grokky. I am all furry !
   <BLANKLINE>
 
+Note - we can query our component with a very convenient function::
+
+  >>> print pt.getPageTemplate(mfv, furry_request)
+  <megrok.pagetemplate.components.ViewPageTemplate object at ...>
+
 Awesome. Our Mammoth is now fully prepared to face the cold. Though,
 let's make sure the simpliest request strip the animal from its warm
 hairs::

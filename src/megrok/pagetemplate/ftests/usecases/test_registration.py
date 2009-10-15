@@ -23,16 +23,22 @@
     <strong>It works</strong>
   </div>
   <BLANKLINE>
+
+  >>> same = megrok.pagetemplate.getPageTemplate(obj, request)
+  >>> print same
+  <megrok.pagetemplate.components.ViewPageTemplate object at ...>
+  >>> template.read() == same.read()
+  True
+
 """
 
 import grokcore.view
-import grokcore.viewlet 
 import megrok.pagetemplate
 
 from zope.component import getMultiAdapter
 from zope.pagetemplate.interfaces import IPageTemplate
 
-grokcore.view.templatedir("templates")
+megrok.pagetemplate.templatedir("templates")
 
 
 class MyContext(grokcore.view.Context):
@@ -54,5 +60,5 @@ class MyView(grokcore.view.View):
 
 
 class MyTemplate(megrok.pagetemplate.PageTemplate):
-    grokcore.viewlet.view(MyView)
-    grokcore.view.template("test")
+    megrok.pagetemplate.view(MyView)
+    megrok.pagetemplate.template("test")
