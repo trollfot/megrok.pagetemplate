@@ -1,10 +1,14 @@
 Changelog
 =========
 
-0.4 - Beta4 UNRELEASED
-----------------------
+0.4 (2010-02-21)
+----------------
 
-* /
+* Cleaned up the dependencies, to get rid of all the zope.app
+  artifacts.
+
+* Cleaned up the imports and tests.
+
 
 0.3 - Beta3 Release
 -------------------
