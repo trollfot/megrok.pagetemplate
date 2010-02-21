@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os
 import martian
 import zope.component
 import grokcore.view
@@ -8,12 +7,9 @@ import grokcore.viewlet
 import grokcore.component
 
 from martian import util
-from martian.error import GrokError
-
+from megrok.pagetemplate.components import PageTemplate
 from zope.pagetemplate.interfaces import IPageTemplate
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
-
-from megrok.pagetemplate.components import PageTemplate
 
 
 class PageTemplateGrokker(martian.ClassGrokker):

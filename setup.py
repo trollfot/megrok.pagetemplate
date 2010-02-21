@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.4dev'
+version = '0.4'
 
 setup(name='megrok.pagetemplate',
       version=version,
@@ -32,13 +32,23 @@ setup(name='megrok.pagetemplate',
       include_package_data=True,
       zip_safe=False,
       platforms = 'Any',
+      extras_require={'test': [
+          'zope.browserpage',
+          'zope.container',
+          'zope.interface',
+          'zope.site',
+          'zope.testing',
+          'zope.traversing',
+          ]},
       install_requires=[
-          'setuptools',
+          'grokcore.component',
           'grokcore.view>=1.12.2',
           'grokcore.viewlet',
-          'grokcore.component',
+          'martian',
+          'setuptools',
           'zope.component',
-          'zope.pagetemplate'
+          'zope.pagetemplate',
+          'zope.publisher',
       ],
       entry_points="""
       # -*- Entry points: -*-
