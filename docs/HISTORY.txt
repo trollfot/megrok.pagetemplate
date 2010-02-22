@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.4.1 (2010-02-22)
+------------------
+
+* The MANIFEST has been updated so the 'templates' folder of the tests
+  module is now part of the source release (thus the tests now run
+  correctly).
+
+
 0.4 (2010-02-21)
 ----------------
 
