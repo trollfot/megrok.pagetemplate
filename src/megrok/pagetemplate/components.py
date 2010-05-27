@@ -11,7 +11,7 @@ class ViewPageTemplate(object):
         self.view = view
         self.template = template
         self.macros = template._template.macros
-    
+
     def __call__(self, *args, **kw):
         return self.template.render(self.view)
 
