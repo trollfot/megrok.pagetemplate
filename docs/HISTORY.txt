@@ -1,6 +1,14 @@
 Changelog
 =========
 
+0.6 (2010-11-10)
+----------------
+
+* Tested for the latest grokcore packages.
+
+* Dependencies to ``grokcore.viewlet`` and ``zope.testing` removed.
+
+
 0.5 (2010-05-27)
 ----------------
 
