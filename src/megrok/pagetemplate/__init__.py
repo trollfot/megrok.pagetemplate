@@ -1,6 +1,5 @@
 # external imports
-from grokcore.viewlet import view
-from grokcore.view import name, template, templatedir, layer
+from grokcore.view import view, name, template, templatedir, layer
 from zope.pagetemplate.interfaces import IPageTemplate
 
 # exposed `megrok.pagetemplate` API

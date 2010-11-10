@@ -3,7 +3,6 @@
 import martian
 import zope.component
 import grokcore.view
-import grokcore.viewlet
 import grokcore.component
 
 from megrok.pagetemplate.components import PageTemplate
@@ -15,7 +14,7 @@ class PageTemplateGrokker(martian.ClassGrokker):
     martian.priority(990)
     martian.component(PageTemplate)
     martian.directive(grokcore.component.name)
-    martian.directive(grokcore.viewlet.view)
+    martian.directive(grokcore.view.view)
     martian.directive(grokcore.component.provides, default=IPageTemplate)
     martian.directive(grokcore.view.layer, default=IDefaultBrowserLayer)
 

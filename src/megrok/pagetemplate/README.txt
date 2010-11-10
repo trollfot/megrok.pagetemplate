@@ -5,14 +5,14 @@ megrok.pagetemplate
 Introduction
 ------------
 
-`megrok.pagetemplate` is a thin Grok layer above zope.pagetemplate
-package. It allows the developper to register IPageTemplate components
+``megrok.pagetemplate`` is a thin Grok layer above ``zope.pagetemplate``
+package. It allows the developper to register `IPageTemplate` components
 using grokked components. The syntax is meant to be very simple and
-readable. `megrok.pagetemplate` only provides one component named
-PageTemplate and uses the basic grokcore.view and grokcore.viewlet
-directives : name, view, context, layer. To make it even simplier and
-straightforward, it uses the grokcore.view template registry to
-register the template files associated to the pagetemplate component.
+readable. ``megrok.pagetemplate`` only provides one component named
+PageTemplate and uses the basic grokcore.view directives : `name`, `view`,
+`context`, `layer`. To make it even simplier and straightforward, it uses
+the grokcore.view template registry to register the template files
+associated to the pagetemplate component.
 
 
 Getting started

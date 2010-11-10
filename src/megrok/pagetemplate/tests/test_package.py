@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import doctest
 import unittest
 from megrok.pagetemplate import tests
-from zope.testing import doctest
 
 
 def make_test(dottedname):

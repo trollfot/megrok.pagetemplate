@@ -1,23 +1,22 @@
+# -*- coding: utf-8 -*-
+
 from setuptools import setup, find_packages
 import os
 
-version = '0.5'
+version = '0.6'
+history = open(os.path.join("docs", "HISTORY.txt")).read()
+readme = open(os.path.join(
+    "src", "megrok", "pagetemplate", "README.txt")).read()
 
 setup(name='megrok.pagetemplate',
       version=version,
       description=("Page template component for Grok, "
                    "based on zope.pagetemplate"),
-      long_description = u"%s\n\n%s" % (
-          open(os.path.join("src", "megrok", "pagetemplate", "README.txt"
-                            )).read(),
-          open(os.path.join("docs", "HISTORY.txt")).read()
-          ),
+      long_description = u"%s\n\n%s" % (readme, history),
       classifiers=[
-        'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'Framework :: Zope3',
         'Intended Audience :: Other Audience',
-        'License :: OSI Approved :: GNU General Public License (GPL)',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         ],
@@ -37,13 +36,12 @@ setup(name='megrok.pagetemplate',
           'zope.container',
           'zope.interface',
           'zope.site',
-          'zope.testing',
           'zope.traversing',
+          'zope.security',
           ]},
       install_requires=[
           'grokcore.component',
-          'grokcore.view>=1.12.2',
-          'grokcore.viewlet',
+          'grokcore.view>=2.0',
           'martian',
           'setuptools',
           'zope.component >= 3.9.1',
