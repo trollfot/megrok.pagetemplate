@@ -8,6 +8,16 @@ import grokcore.component
 from megrok.pagetemplate.components import PageTemplate
 from zope.pagetemplate.interfaces import IPageTemplate
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+from grokcore.view.meta.views import TemplateGrokker
+
+class PaggeTemplateTemplateGrokker(TemplateGrokker):
+    martian.component(PageTemplate)
+
+    def has_render(self, factory):
+        return False
+
+    def has_no_render(self, factory):
+        return True
 
 
 class PageTemplateGrokker(martian.ClassGrokker):
@@ -25,14 +35,6 @@ class PageTemplateGrokker(martian.ClassGrokker):
 
     def execute(self, factory, config, name, view, layer, provides, **kw):
         pagetemplate = factory()
-        templates = factory.module_info.getAnnotation('grok.templates', None)
-
-        if templates is not None:
-            config.action(
-                discriminator=None,
-                callable=self.checkTemplates,
-                args=(templates, factory.module_info, factory))
-
         adapts = (view, layer)
         config.action(
             discriminator=('adapter', adapts, provides, name),
@@ -40,14 +42,3 @@ class PageTemplateGrokker(martian.ClassGrokker):
             args=(pagetemplate, adapts, provides, name))
 
         return True
-
-    def checkTemplates(self, templates, module_info, factory):
-
-        def has_render(factory):
-            return False
-
-        def has_no_render(factory):
-            return True
-
-        templates.checkTemplates(module_info, factory, 'pagetemplate',
-                                 has_render, has_no_render)
