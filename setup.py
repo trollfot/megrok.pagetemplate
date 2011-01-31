@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.6'
+version = '0.7'
 history = open(os.path.join("docs", "HISTORY.txt")).read()
 readme = open(os.path.join(
     "src", "megrok", "pagetemplate", "README.txt")).read()
@@ -41,7 +41,7 @@ setup(name='megrok.pagetemplate',
           ]},
       install_requires=[
           'grokcore.component',
-          'grokcore.view>=2.0',
+          'grokcore.view >= 2.2',
           'martian',
           'setuptools',
           'zope.component >= 3.9.1',
