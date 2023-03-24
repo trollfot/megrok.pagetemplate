@@ -45,11 +45,12 @@ setup(name='megrok.pagetemplate',
       install_requires=[
           'grokcore.component',
           'grokcore.view >= 2.2',
-          'martian',
+          'martian < 2; python_version=="2.7"',
           'setuptools',
           'zope.component >= 3.9.1',
           'zope.pagetemplate',
           'zope.publisher',
+          'zope.tal < 5; python_version=="2.7"',  # transitive
       ],
       entry_points="""
       # -*- Entry points: -*-

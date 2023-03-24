@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import zope.component
-from zope.component.interfaces import IComponentLookup
+try:
+    from zope.interface.interfaces import IComponentLookup
+except ImportError:  # PY2
+    from zope.component.interfaces import IComponentLookup
 from zope.component.testlayer import ZCMLFileLayer
 from zope.container.interfaces import ISimpleReadContainer
 from zope.container.traversal import ContainerTraversable

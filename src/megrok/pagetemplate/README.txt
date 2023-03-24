@@ -98,7 +98,7 @@ to render it::
   >>> mammoth = Mammoth()
 
   >>> mnv = getMultiAdapter((mammoth, request), name="mammothview")
-  >>> print mnv()
+  >>> print(mnv())
   My name is Grokky. I am naked !
   <BLANKLINE>
   
@@ -133,13 +133,13 @@ Our new template registered, we are now able to test if everything worked
 as intended. Using the new skin, our Mammoth should now be furry::
 
   >>> mfv = getMultiAdapter((mammoth, furry_request), name="mammothview")
-  >>> print mfv()
+  >>> print(mfv())
   My name is Grokky. I am all furry !
   <BLANKLINE>
 
 Note - we can query our component with a very convenient function::
 
-  >>> print pt.getPageTemplate(mfv, furry_request)
+  >>> print(pt.getPageTemplate(mfv, furry_request))
   <megrok.pagetemplate.components.ViewPageTemplate object at ...>
 
 Awesome. Our Mammoth is now fully prepared to face the cold. Though,
@@ -147,7 +147,7 @@ let's make sure the simpliest request strip the animal from its warm
 hairs::
 
   >>> mnv = getMultiAdapter((mammoth, request), name="mammothview")
-  >>> print mnv()
+  >>> print(mnv())
   My name is Grokky. I am naked !
   <BLANKLINE>
 

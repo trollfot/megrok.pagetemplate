@@ -4,8 +4,8 @@ from grokcore.component import baseclass, implements
 from zope.pagetemplate.interfaces import IPageTemplate
 
 
+@implementer(IPageTemplate)
 class ViewPageTemplate(object):
-    implements(IPageTemplate)
 
     def __init__(self, template, view):
         self.view = view

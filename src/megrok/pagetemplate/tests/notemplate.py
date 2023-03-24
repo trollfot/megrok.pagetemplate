@@ -14,7 +14,8 @@ We create a pagetemplate with no template defined.
   >>> grokcore.component.testing.grok_component('fail', AnotherTemplate)
   Traceback (most recent call last):
   ...
-  ConfigurationExecutionError: <class 'martian.error.GrokError'>: Pagetemplate <class 'megrok.pagetemplate.tests.notemplate.AnotherTemplate'> has no associated template or 'render' method.
+  ConfigurationExecutionError:
+      GrokError: Pagetemplate <class 'megrok.pagetemplate.tests.notemplate.AnotherTemplate'> has no associated template or 'render' method.
   ...
 
 During the component registration process, the template registry complains.
@@ -30,7 +31,8 @@ Yet, the template doesn't exist : we except another failure.
   >>> grokcore.component.testing.grok_component('fail', YetAnotherTemplate)
   Traceback (most recent call last):
   ...
-  ConfigurationExecutionError: <class 'martian.error.GrokError'>: Pagetemplate <class 'megrok.pagetemplate.tests.notemplate.YetAnotherTemplate'> has no associated template or 'render' method.
+  ConfigurationExecutionError:
+      GrokError: Template doesnt_exist for Pagetemplate <class 'megrok.pagetemplate.tests.notemplate.YetAnotherTemplate'> cannot be found.
   ...
 
 The template registry is not fooled by the template directive. It works.

@@ -29,14 +29,14 @@ As it's registered, we can not query it::
    >>> request = TestRequest()
    >>> view = View(Context(), request)
    >>> pt = queryMultiAdapter((view, request), IPageTemplate, name='first')
-   >>> print pt
+   >>> print(pt)
    <megrok.pagetemplate.components.ViewPageTemplate object at ...>
 
 
 Querying it without a name lead to an error, if no template is registered
 for u''::
 
-   >>> print queryMultiAdapter((view, request), IPageTemplate)
+   >>> print(queryMultiAdapter((view, request), IPageTemplate))
    None
 
 
@@ -54,18 +54,18 @@ Now, we can register a second template, for the same view/request couple::
 We verify we can query both::
 
    >>> pt1 = queryMultiAdapter((view, request), IPageTemplate, name='first')
-   >>> print pt1
+   >>> print(pt1)
    <megrok.pagetemplate.components.ViewPageTemplate object at ...>
 
    >>> pt2 = queryMultiAdapter((view, request), IPageTemplate, name='second')
-   >>> print pt2
+   >>> print(pt2)
    <megrok.pagetemplate.components.ViewPageTemplate object at ...>
 
 
 We try out convenient function::
 
    >>> same = megrok.pagetemplate.getPageTemplate(view, request, name='first')
-   >>> print same.template
+   >>> print(same.template)
    <test template in ...tests/templates/test.pt>
 
 """
