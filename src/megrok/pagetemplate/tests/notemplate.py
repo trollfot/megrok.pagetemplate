@@ -7,7 +7,7 @@ Let's verify the behavior expected from our component :
   >>> import grokcore.component.testing
 
 We create a pagetemplate with no template defined.
-  
+
   >>> class AnotherTemplate(megrok.pagetemplate.PageTemplate):
   ...     megrok.pagetemplate.view(AnotherView)
 
@@ -37,7 +37,7 @@ Yet, the template doesn't exist : we except another failure.
 
 The template registry is not fooled by the template directive. It works.
 
-"""
+"""  # noqa: E501
 
 import grokcore.view
 

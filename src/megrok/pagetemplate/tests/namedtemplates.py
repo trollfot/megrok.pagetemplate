@@ -11,7 +11,7 @@ Let's create a page template component, as we did previously. The only change
 here will be to add the 'name' directive.
 
    >>> from zope.pagetemplate.interfaces import IPageTemplate
-   
+
    >>> class Template(megrok.pagetemplate.PageTemplate):
    ...     megrok.pagetemplate.view(View)
    ...     megrok.pagetemplate.name('first')
@@ -25,7 +25,7 @@ As it's registered, we can not query it::
 
    >>> from zope.publisher.browser import TestRequest
    >>> from zope.component import queryMultiAdapter
-   
+
    >>> request = TestRequest()
    >>> view = View(Context(), request)
    >>> pt = queryMultiAdapter((view, request), IPageTemplate, name='first')

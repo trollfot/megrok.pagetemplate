@@ -27,8 +27,16 @@ additional-config = [
     "    src/megrok/pagetemplate/__init__.py: F401",
     ]
 
+[manifest]
+additional-rules = [
+    "recursive-include docs *.txt",
+    "recursive-include src *.pt",
+    "recursive-include src *.txt",
+    "recursive-include src *.zcml",
+    ]
+
 [coverage]
-fail-under = 0
+fail-under = 97
 
 [github-actions]
 additional-config = [

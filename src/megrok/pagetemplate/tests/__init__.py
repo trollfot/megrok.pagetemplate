@@ -22,11 +22,11 @@ from zope.traversing.testing import setUp
 class MegrokPagetemplateLayer(ZCMLFileLayer):
     """The megrok.pagetemplate main test layer.
     """
-    
+
     def setUp(self):
         ZCMLFileLayer.setUp(self)
         zope.component.hooks.setHooks()
-    
+
         # Set up site manager adapter
         zope.component.provideAdapter(
             SiteManagerAdapter, (Interface,), IComponentLookup)
@@ -42,7 +42,6 @@ class MegrokPagetemplateLayer(ZCMLFileLayer):
         zope.component.hooks.setSite(site)
 
         return site
-
 
     def tearDown(self):
         ZCMLFileLayer.tearDown(self)
