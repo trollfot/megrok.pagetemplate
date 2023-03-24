@@ -7,15 +7,16 @@ from setuptools import setup
 
 
 version = '0.8.dev0'
-history = open(os.path.join("docs", "HISTORY.txt")).read()
-readme = open(os.path.join(
-    "src", "megrok", "pagetemplate", "README.txt")).read()
+with open("CHANGES.rst") as f:
+    changes = f.read()
+with open(os.path.join("src", "megrok", "pagetemplate", "README.txt")) as f:
+    readme = f.read()
 
 setup(name='megrok.pagetemplate',
       version=version,
       description=("Page template component for Grok, "
                    "based on zope.pagetemplate"),
-      long_description=u"%s\n\n%s" % (readme, history),
+      long_description=u"%s\n\n%s" % (readme, changes),
       classifiers=[
           'Environment :: Web Environment',
           'Framework :: Zope3',
