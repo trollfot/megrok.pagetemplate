@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from setuptools import setup, find_packages
 import os
+
+from setuptools import find_packages
+from setuptools import setup
+
 
 version = '0.7'
 history = open(os.path.join("docs", "HISTORY.txt")).read()
