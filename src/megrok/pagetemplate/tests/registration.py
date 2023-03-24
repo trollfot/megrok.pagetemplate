@@ -33,10 +33,11 @@
 """
 
 import grokcore.view
-import megrok.pagetemplate
-
 from zope.component import getMultiAdapter
 from zope.pagetemplate.interfaces import IPageTemplate
+
+import megrok.pagetemplate
+
 
 megrok.pagetemplate.templatedir("templates")
 

@@ -1,16 +1,20 @@
 # -*- coding: utf-8 -*-
 
 import zope.component
+
+
 try:
     from zope.interface.interfaces import IComponentLookup
 except ImportError:  # PY2
     from zope.component.interfaces import IComponentLookup
+
 from zope.component.testlayer import ZCMLFileLayer
 from zope.container.interfaces import ISimpleReadContainer
 from zope.container.traversal import ContainerTraversable
 from zope.interface import Interface
 from zope.site.folder import rootFolder
-from zope.site.site import LocalSiteManager, SiteManagerAdapter
+from zope.site.site import LocalSiteManager
+from zope.site.site import SiteManagerAdapter
 from zope.traversing.interfaces import ITraversable
 from zope.traversing.testing import setUp
 

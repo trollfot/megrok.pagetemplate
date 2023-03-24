@@ -40,7 +40,9 @@ The template registry is not fooled by the template directive. It works.
 """
 
 import grokcore.view
+
 import megrok.pagetemplate
+
 
 megrok.pagetemplate.templatedir("templates")
 

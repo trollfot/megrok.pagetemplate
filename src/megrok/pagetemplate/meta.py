@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-import martian
 import grokcore.view
+import martian
 import zope.component
-
 from grokcore.view.meta.views import TemplateGrokker
-from megrok.pagetemplate.components import PageTemplate
 from zope.pagetemplate.interfaces import IPageTemplate
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+
+from megrok.pagetemplate.components import PageTemplate
 
 
 class PageTemplateTemplateGrokker(TemplateGrokker):

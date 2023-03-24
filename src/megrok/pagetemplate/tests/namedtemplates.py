@@ -71,7 +71,9 @@ We try out convenient function::
 """
 
 import grokcore.view
+
 import megrok.pagetemplate
+
 
 megrok.pagetemplate.templatedir("templates")
 

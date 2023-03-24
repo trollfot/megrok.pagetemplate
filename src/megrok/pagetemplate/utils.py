@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from zope.component import queryMultiAdapter
+
 from megrok.pagetemplate import IPageTemplate
 
 

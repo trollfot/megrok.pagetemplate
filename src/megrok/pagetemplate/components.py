@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from grokcore.component import baseclass, implements
+from grokcore.component import baseclass
+from grokcore.component import implementer
 from zope.pagetemplate.interfaces import IPageTemplate
 
 
