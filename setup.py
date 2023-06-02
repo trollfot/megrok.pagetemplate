@@ -6,7 +6,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 
-version = '0.8+rl0'
+version = '0.8+rl1.dev0'
 with open("CHANGES.rst") as f:
     changes = f.read()
 with open(os.path.join("src", "megrok", "pagetemplate", "README.txt")) as f:
