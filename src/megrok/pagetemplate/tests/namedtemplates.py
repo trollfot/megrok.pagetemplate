@@ -11,7 +11,7 @@ Let's create a page template component, as we did previously. The only change
 here will be to add the 'name' directive.
 
    >>> from zope.pagetemplate.interfaces import IPageTemplate
-   
+
    >>> class Template(megrok.pagetemplate.PageTemplate):
    ...     megrok.pagetemplate.view(View)
    ...     megrok.pagetemplate.name('first')
@@ -25,18 +25,18 @@ As it's registered, we can not query it::
 
    >>> from zope.publisher.browser import TestRequest
    >>> from zope.component import queryMultiAdapter
-   
+
    >>> request = TestRequest()
    >>> view = View(Context(), request)
    >>> pt = queryMultiAdapter((view, request), IPageTemplate, name='first')
-   >>> print pt
+   >>> print(pt)
    <megrok.pagetemplate.components.ViewPageTemplate object at ...>
 
 
 Querying it without a name lead to an error, if no template is registered
 for u''::
 
-   >>> print queryMultiAdapter((view, request), IPageTemplate)
+   >>> print(queryMultiAdapter((view, request), IPageTemplate))
    None
 
 
@@ -54,24 +54,26 @@ Now, we can register a second template, for the same view/request couple::
 We verify we can query both::
 
    >>> pt1 = queryMultiAdapter((view, request), IPageTemplate, name='first')
-   >>> print pt1
+   >>> print(pt1)
    <megrok.pagetemplate.components.ViewPageTemplate object at ...>
 
    >>> pt2 = queryMultiAdapter((view, request), IPageTemplate, name='second')
-   >>> print pt2
+   >>> print(pt2)
    <megrok.pagetemplate.components.ViewPageTemplate object at ...>
 
 
 We try out convenient function::
 
    >>> same = megrok.pagetemplate.getPageTemplate(view, request, name='first')
-   >>> print same.template
+   >>> print(same.template)
    <test template in ...tests/templates/test.pt>
 
 """
 
 import grokcore.view
+
 import megrok.pagetemplate
+
 
 megrok.pagetemplate.templatedir("templates")
 

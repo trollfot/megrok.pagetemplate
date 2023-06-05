@@ -3,7 +3,7 @@
   >>> request = TestRequest()
 
   >>> obj = MyView(MyContext(), request)
-  >>> print obj()
+  >>> print(obj())
   <span>Test !</span>
   <div>
     <strong>It works</strong>
@@ -14,10 +14,10 @@
   >>> IPageTemplate.providedBy(template)
   True
 
-  >>> print template.macros
-  {u'a_simple_macro': ...
+  >>> print(template.macros)
+  {...'a_simple_macro': ...
 
-  >>> print template.read()
+  >>> print(template.read())
   <span></span>
   <div>
     <strong>It works</strong>
@@ -25,7 +25,7 @@
   <BLANKLINE>
 
   >>> same = megrok.pagetemplate.getPageTemplate(obj, request)
-  >>> print same
+  >>> print(same)
   <megrok.pagetemplate.components.ViewPageTemplate object at ...>
   >>> template.read() == same.read()
   True
@@ -33,10 +33,11 @@
 """
 
 import grokcore.view
-import megrok.pagetemplate
-
 from zope.component import getMultiAdapter
 from zope.pagetemplate.interfaces import IPageTemplate
+
+import megrok.pagetemplate
+
 
 megrok.pagetemplate.templatedir("templates")
 

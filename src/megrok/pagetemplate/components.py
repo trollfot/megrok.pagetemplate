@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from grokcore.component import baseclass, implements
+from grokcore.component import baseclass
+from grokcore.component import implementer
 from zope.pagetemplate.interfaces import IPageTemplate
 
 
+@implementer(IPageTemplate)
 class ViewPageTemplate(object):
-    implements(IPageTemplate)
 
     def __init__(self, template, view):
         self.view = view

@@ -1,32 +1,32 @@
-# This is the repository-wide ignore file. Suffixes below are ignored
-# i.e. committing not allowed.
-
-# archives
-*.tar
-*.tar.gz
-*.tar.bz2
-*.zip
-
-# editors
-*.swp
-*.elc
-*.el
-*~
-*\#*\#
-
-# python
+# Generated from:
+# https://github.com/zopefoundation/meta/tree/master/config/pure-python
+*.dll
+*.egg-info/
+*.profraw
 *.pyc
 *.pyo
-*.bdf
-*.bak
+*.so
+.coverage
+.coverage.*
+.eggs/
+.installed.cfg
+.mr.developer.cfg
+.tox/
+.vscode/
+__pycache__/
+bin/
 build/
+coverage.xml
+develop-eggs/
+develop/
 dist/
-
-
-# miscellaneous
-*.orig
-*.ori
-*.old
-*.svn
-*.rej
-*.egg-info
+docs/_build
+eggs/
+etc/
+lib/
+lib64
+log/
+parts/
+pyvenv.cfg
+testing.log
+var/

@@ -1,2 +1,13 @@
-recursive-include src/megrok/pagetemplate *.txt *.py *.zcml *.pt
+# Generated from:
+# https://github.com/zopefoundation/meta/tree/master/config/pure-python
+include *.md
+include *.rst
+include *.txt
+include buildout.cfg
+include tox.ini
+
+recursive-include src *.py
 recursive-include docs *.txt
+recursive-include src *.pt
+recursive-include src *.txt
+recursive-include src *.zcml
